@@ -8,24 +8,20 @@ import { MeetupsProvider } from './store/meetups'
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
+    element: (
+      <MeetupsProvider>
+        <Layout />
+      </MeetupsProvider>
+    ),
     errorElement: <Error />,
     children: [
       {
         path: '/',
-        element: (
-          <MeetupsProvider>
-            <Meetups />
-          </MeetupsProvider>
-        ),
+        element: <Meetups />,
       },
       {
         path: '/new-meetup',
-        element: (
-          <MeetupsProvider>
-            <NewMeetup />
-          </MeetupsProvider>
-        ),
+        element: <NewMeetup />,
       },
       {
         path: 'favorite-meetups',
