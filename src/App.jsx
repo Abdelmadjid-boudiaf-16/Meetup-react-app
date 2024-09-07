@@ -4,6 +4,7 @@ import NewMeetup from './pages/NewMeetup'
 import FavoriteMeetups from './pages/FavoriteMeetups'
 import Layout from './Layout'
 import Error from './pages/Error'
+import { MeetupsProvider } from './store/meetups'
 
 const router = createBrowserRouter([
   {
@@ -12,11 +13,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Meetups />,
+        element: (
+          <MeetupsProvider>
+            <Meetups />
+          </MeetupsProvider>
+        ),
       },
       {
         path: '/new-meetup',
-        element: <NewMeetup />,
+        element: (
+          <MeetupsProvider>
+            <NewMeetup />
+          </MeetupsProvider>
+        ),
       },
       {
         path: 'favorite-meetups',
